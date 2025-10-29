@@ -14,12 +14,30 @@
         </header>
 
         <div class="api-section">
-            <label for="apiKey">OpenAI API klíč:</label>
-            <div class="input-group">
-                <input type="password" id="apiKey" placeholder="sk-...">
-                <button id="toggleApiKey" class="icon-button" title="Zobrazit/skrýt">👁️</button>
+            <label>Vyberte AI službu:</label>
+            <div class="api-selector">
+                <label class="radio-label">
+                    <input type="radio" name="apiProvider" value="demo" checked>
+                    <span>🎮 DEMO (zdarma, náhodné výsledky)</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="apiProvider" value="gemini">
+                    <span>✨ Google Gemini (DOPORUČENO - velký free tier)</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="apiProvider" value="openai">
+                    <span>🤖 OpenAI (placené)</span>
+                </label>
             </div>
-            <small class="hint">Váš klíč je uložen lokálně v prohlížeči</small>
+
+            <div id="apiKeySection" class="api-key-section hidden">
+                <label for="apiKey">API klíč:</label>
+                <div class="input-group">
+                    <input type="password" id="apiKey" placeholder="Vložte API klíč...">
+                    <button id="toggleApiKey" class="icon-button" title="Zobrazit/skrýt">👁️</button>
+                </div>
+                <small class="hint" id="apiHint">Klíč je uložen lokálně v prohlížeči</small>
+            </div>
         </div>
 
         <div class="camera-section">
