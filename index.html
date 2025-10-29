@@ -3,17 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jsem smažka</title>
+    <title>🍺 Jsem smažka</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Jsem smažka</h1>
-        <input type="text" id="apiKey" placeholder="Vložte váš OpenAI API klíč">
-        <button id="captureButton">Vyfoť obličej</button>
-        <video id="video" autoplay></video>
+        <header>
+            <h1>🍺 Jsem smažka?</h1>
+            <p class="subtitle">AI detekce party devastace</p>
+        </header>
+
+        <div class="api-section">
+            <label for="apiKey">OpenAI API klíč:</label>
+            <div class="input-group">
+                <input type="password" id="apiKey" placeholder="sk-...">
+                <button id="toggleApiKey" class="icon-button" title="Zobrazit/skrýt">👁️</button>
+            </div>
+            <small class="hint">Váš klíč je uložen lokálně v prohlížeči</small>
+        </div>
+
+        <div class="camera-section">
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <div id="cameraError" class="error-message hidden"></div>
+            </div>
+
+            <div class="preview-container hidden" id="previewContainer">
+                <img id="preview" alt="Náhled fotky">
+            </div>
+
+            <div class="button-group">
+                <button id="captureButton" class="primary-button">
+                    <span class="button-icon">📸</span>
+                    <span class="button-text">Vyfoť obličej</span>
+                </button>
+                <button id="retakeButton" class="secondary-button hidden">
+                    <span class="button-icon">🔄</span>
+                    <span class="button-text">Vyfoť znovu</span>
+                </button>
+                <button id="analyzeButton" class="primary-button hidden">
+                    <span class="button-icon">🤖</span>
+                    <span class="button-text">Analyzovat</span>
+                </button>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzujem tvůj stav...</p>
+            </div>
+        </div>
+
+        <div id="result" class="result hidden"></div>
+
         <canvas id="canvas" style="display: none;"></canvas>
-        <div id="result"></div>
+
+        <footer>
+            <p class="privacy-note">⚠️ Vše probíhá lokálně, fotky nikam neukládáme</p>
+        </footer>
     </div>
     <script src="app.js"></script>
 </body>
