@@ -7,12 +7,16 @@ AI aplikace pro detekci party devastace pomocí analýzy obličeje.
 
 ## 🎯 O aplikaci
 
-"Jsem smažka?" je zábavná webová aplikace, která pomocí OpenAI GPT-4o Vision API analyzuje váš obličej a určuje, jak moc vypadáte unavení/po párty/s kocovinou. Aplikace vás zařadí do jedné ze 6 kategorií devastace.
+"Jsem smažka?" je zábavná webová aplikace, která pomocí AI (Google Gemini nebo OpenAI) analyzuje váš obličej a určuje, jak moc vypadáte unavení/po párty/s kocovinou. Aplikace vás zařadí do jedné ze 6 kategorií devastace.
+
+**✨ Nově s Google Gemini - ZDARMA až 1500 analýz denně!**
 
 ## ✨ Funkce
 
 - 📸 **Zachytávání z kamery** - vyfoťte se přímo v prohlížeči
-- 🤖 **AI analýza** - využití OpenAI GPT-4o Vision API
+- 🤖 **AI analýza** - Google Gemini nebo OpenAI
+- ✨ **Google Gemini ZDARMA** - 1500 analýz denně bez platby!
+- 🎮 **DEMO režim** - funguje i bez API klíče
 - 👁️ **Náhled fotky** - zobrazení před analýzou
 - 🔄 **Možnost opakování** - vyfoťte se znovu, pokud nejste spokojeni
 - 💾 **Lokální uložení** - API klíč se ukládá v prohlížeči
@@ -30,21 +34,50 @@ AI aplikace pro detekci party devastace pomocí analýzy obličeje.
 
 ## 🚀 Jak to použít
 
-### Možnost 1: DEMO režim (bez API klíče) 🎮
+Aplikace je dostupná na: **[Martyparty1988.github.io/JsemSmazka](https://martyparty1988.github.io/JsemSmazka)**
 
-**Nejjednodušší způsob - funguje okamžitě!**
+### Možnost 1: DEMO režim 🎮
 
-1. Otevřete aplikaci: **[Martyparty1988.github.io/JsemSmazka](https://martyparty1988.github.io/JsemSmazka)**
-2. Nechte pole API klíče **prázdné**
-3. Vyfoťte se a klikněte "Analyzovat"
-4. Potvrdťte DEMO režim
-5. Získáte náhodný vtipný výsledek
+**Nejrychlejší - funguje okamžitě!**
 
-⚠️ DEMO režim negeneruje skutečnou AI analýzu, jen náhodný výsledek.
+1. Vyberte "🎮 DEMO" režim
+2. Vyfoťte se a klikněte "Analyzovat"
+3. Získáte náhodný vtipný výsledek
 
-### Možnost 2: S OpenAI API klíčem (skutečná AI analýza) 🤖
+⚠️ Negeneruje skutečnou AI analýzu, jen náhodný výsledek.
 
-#### 1. Získejte OpenAI API klíč
+---
+
+### Možnost 2: Google Gemini ✨ **DOPORUČENO!**
+
+**Nejlepší volba - velký FREE tier!**
+
+#### Proč Gemini?
+- ✅ **ZDARMA** až 15 požadavků/minuta, 1500/den
+- ✅ Kvalitní AI analýza
+- ✅ Žádný billing není potřeba
+- ✅ Snadné nastavení
+
+#### Získání API klíče:
+
+1. Jděte na [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Přihlaste se Google účtem
+3. Klikněte "Create API Key"
+4. Zkopírujte klíč (začíná `AIza...`)
+
+#### Použití:
+
+1. V aplikaci vyberte "✨ Google Gemini"
+2. Vložte váš API klíč
+3. Vyfoťte se a analyzujte!
+
+---
+
+### Možnost 3: OpenAI 🤖
+
+**Placené - pouze pokud už máte kredit**
+
+#### Získání API klíče:
 
 1. Jděte na [OpenAI Platform](https://platform.openai.com/api-keys)
 2. Vytvořte si účet nebo se přihlaste
@@ -52,15 +85,11 @@ AI aplikace pro detekci party devastace pomocí analýzy obličeje.
 4. Zkopírujte klíč (začíná `sk-...`)
 5. **Důležité:** Nastavte billing na [platform.openai.com/billing](https://platform.openai.com/billing)
 
-#### 2. Otevřete aplikaci
+#### Použití:
 
-Aplikace je dostupná na: **[Martyparty1988.github.io/JsemSmazka](https://martyparty1988.github.io/JsemSmazka)**
-
-#### 3. Zadejte API klíč
-
-- Vložte váš OpenAI API klíč do pole
-- Klíč se automaticky uloží do vašeho prohlížeče
-- Můžete použít tlačítko 👁️ pro zobrazení/skrytí klíče
+1. V aplikaci vyberte "🤖 OpenAI"
+2. Vložte váš API klíč
+3. Vyfoťte se a analyzujte!
 
 ### 4. Vyfoťte se
 
@@ -92,7 +121,10 @@ python -m http.server 8000
 ## 🛠️ Technologie
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **AI**: OpenAI GPT-4o Vision API
+- **AI služby**:
+  - Google Gemini 1.5 Flash (doporučeno - FREE)
+  - OpenAI GPT-4o Vision
+  - DEMO režim (offline)
 - **Camera**: MediaDevices API
 - **Storage**: LocalStorage API
 - **Deployment**: GitHub Pages
@@ -100,26 +132,60 @@ python -m http.server 8000
 
 ## 🔒 Soukromí a bezpečnost
 
-- ✅ Fotky se zpracovávají pouze přes OpenAI API
-- ✅ Žádné fotky se neukládají na server
+- ✅ Fotky se zpracovávají pouze přes vybranou AI službu (Gemini/OpenAI)
+- ✅ Žádné fotky se neukládají na náš server
 - ✅ API klíč je uložen pouze lokálně ve vašem prohlížeči
-- ✅ Vše probíhá client-side
+- ✅ Vše probíhá client-side (v prohlížeči)
 - ⚠️ API klíč nikdy nesdílejte s nikým
 - ⚠️ Pravidelně rotujte váš API klíč
+- 🎮 DEMO režim vůbec neposílá data nikam
 
 ## 💰 Náklady
 
-Aplikace používá OpenAI API, které je placené:
-- GPT-4o Vision: cca $0.01 za obrázek
-- Používejte s rozvahou
-- Nastavte si limity na OpenAI platformě
+### Google Gemini ✨ DOPORUČENO
+- **ZDARMA:** 15 požadavků/minuta, 1500/den
+- Ideální pro běžné použití
+- Žádný billing potřeba
 
-**Alternativa:** Použijte zdarma DEMO režim!
+### OpenAI 🤖
+- **Placené:** GPT-4o Vision cca $0.01 za obrázek
+- Vyžaduje nastavení platební metody
+- Vhodné pokud už máte kredit
+
+### DEMO režim 🎮
+- **ZDARMA:** Neomezené použití
+- Náhodné výsledky (ne skutečná AI)
 
 ## ⚠️ Řešení problémů
 
-### "Překročen limit API" (Error 429)
+### Gemini API problémy
 
+#### "Překročen limit" (RESOURCE_EXHAUSTED)
+**Příčina:** Příliš mnoho požadavků (free tier: 15/min)
+
+**Řešení:**
+1. ✅ Počkejte 1 minutu a zkuste znovu
+2. ✅ Gemini má limit 15 požadavků za minutu
+3. ✅ Denní limit je 1500 požadavků
+4. ✅ **Nebo použijte DEMO režim**
+
+#### "Neplatný API klíč" (API_KEY_INVALID)
+**Řešení:**
+1. Zkontrolujte, že klíč začíná `AIza`
+2. Vygenerujte nový klíč na [ai.google.dev](https://aistudio.google.com/app/apikey)
+3. Zkopírujte celý klíč včetně `AIza`
+
+#### "Přístup zamítnut" (Error 403)
+**Řešení:**
+1. Zkontrolujte, že máte povolené Gemini API
+2. Jděte na [Google AI Studio](https://aistudio.google.com)
+3. Zkontrolujte omezení API klíče
+
+---
+
+### OpenAI API problémy
+
+#### "Překročen limit API" (Error 429)
 **Příčiny:**
 - Příliš mnoho požadavků za krátký čas
 - Překročen měsíční limit
@@ -129,23 +195,22 @@ Aplikace používá OpenAI API, které je placené:
 1. ✅ Počkejte 1-2 minuty a zkuste znovu
 2. ✅ Zkontrolujte usage na [platform.openai.com/usage](https://platform.openai.com/usage)
 3. ✅ Přidejte kredit na [platform.openai.com/billing](https://platform.openai.com/billing)
-4. ✅ Nastavte vyšší rate limit v nastavení
-5. ✅ **Nebo použijte DEMO režim** (smažte API klíč)
+4. ✅ **Nebo použijte Google Gemini (ZDARMA!)**
 
-### "Nedostatek kreditů" (Error 402)
-
+#### "Nedostatek kreditů" (Error 402)
 **Řešení:**
 1. Přidejte platební metodu na OpenAI
 2. Dobijte kredit (min. $5)
 3. Zkontrolujte billing settings
-4. **Nebo použijte DEMO režim**
+4. **Nebo použijte Google Gemini (ZDARMA!)**
 
-### "Neplatný API klíč" (Error 401)
-
+#### "Neplatný API klíč" (Error 401)
 **Řešení:**
 1. Zkontrolujte, že klíč začíná `sk-`
 2. Vygenerujte nový klíč na [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 3. Zkopírujte celý klíč včetně `sk-`
+
+---
 
 ### Kamera nefunguje
 
