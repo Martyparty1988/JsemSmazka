@@ -30,18 +30,33 @@ AI aplikace pro detekci party devastace pomocí analýzy obličeje.
 
 ## 🚀 Jak to použít
 
-### 1. Získejte OpenAI API klíč
+### Možnost 1: DEMO režim (bez API klíče) 🎮
+
+**Nejjednodušší způsob - funguje okamžitě!**
+
+1. Otevřete aplikaci: **[Martyparty1988.github.io/JsemSmazka](https://martyparty1988.github.io/JsemSmazka)**
+2. Nechte pole API klíče **prázdné**
+3. Vyfoťte se a klikněte "Analyzovat"
+4. Potvrdťte DEMO režim
+5. Získáte náhodný vtipný výsledek
+
+⚠️ DEMO režim negeneruje skutečnou AI analýzu, jen náhodný výsledek.
+
+### Možnost 2: S OpenAI API klíčem (skutečná AI analýza) 🤖
+
+#### 1. Získejte OpenAI API klíč
 
 1. Jděte na [OpenAI Platform](https://platform.openai.com/api-keys)
 2. Vytvořte si účet nebo se přihlaste
 3. Vytvořte nový API klíč
 4. Zkopírujte klíč (začíná `sk-...`)
+5. **Důležité:** Nastavte billing na [platform.openai.com/billing](https://platform.openai.com/billing)
 
-### 2. Otevřete aplikaci
+#### 2. Otevřete aplikaci
 
 Aplikace je dostupná na: **[Martyparty1988.github.io/JsemSmazka](https://martyparty1988.github.io/JsemSmazka)**
 
-### 3. Zadejte API klíč
+#### 3. Zadejte API klíč
 
 - Vložte váš OpenAI API klíč do pole
 - Klíč se automaticky uloží do vašeho prohlížeče
@@ -98,6 +113,46 @@ Aplikace používá OpenAI API, které je placené:
 - GPT-4o Vision: cca $0.01 za obrázek
 - Používejte s rozvahou
 - Nastavte si limity na OpenAI platformě
+
+**Alternativa:** Použijte zdarma DEMO režim!
+
+## ⚠️ Řešení problémů
+
+### "Překročen limit API" (Error 429)
+
+**Příčiny:**
+- Příliš mnoho požadavků za krátký čas
+- Překročen měsíční limit
+- Nedostatečný billing
+
+**Řešení:**
+1. ✅ Počkejte 1-2 minuty a zkuste znovu
+2. ✅ Zkontrolujte usage na [platform.openai.com/usage](https://platform.openai.com/usage)
+3. ✅ Přidejte kredit na [platform.openai.com/billing](https://platform.openai.com/billing)
+4. ✅ Nastavte vyšší rate limit v nastavení
+5. ✅ **Nebo použijte DEMO režim** (smažte API klíč)
+
+### "Nedostatek kreditů" (Error 402)
+
+**Řešení:**
+1. Přidejte platební metodu na OpenAI
+2. Dobijte kredit (min. $5)
+3. Zkontrolujte billing settings
+4. **Nebo použijte DEMO režim**
+
+### "Neplatný API klíč" (Error 401)
+
+**Řešení:**
+1. Zkontrolujte, že klíč začíná `sk-`
+2. Vygenerujte nový klíč na [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+3. Zkopírujte celý klíč včetně `sk-`
+
+### Kamera nefunguje
+
+**Řešení:**
+1. Povolte přístup ke kameře v prohlížeči
+2. Zkontrolujte, že používáte HTTPS
+3. Zkuste jiný prohlížeč (Chrome, Firefox)
 
 ## 🤝 Přispívání
 

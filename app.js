@@ -119,7 +119,10 @@ analyzeButton.addEventListener('click', () => {
 
     const apiKey = apiKeyInput.value.trim();
     if (!apiKey) {
-        alert("Prosím, vložte váš OpenAI API klíč.");
+        // Demo mode without API key
+        if (confirm("Nemáte zadaný API klíč. Chcete spustit DEMO režim? (náhodný výsledek)")) {
+            runDemoMode();
+        }
         return;
     }
 
@@ -185,12 +188,14 @@ Odpověz pouze názvem kategorie a stručným vtipným komentářem (1-2 věty) 
     } catch (err) {
         console.error("Chyba při volání OpenAI API: ", err);
 
-        let errorMessage = "Nepodařilo se analyzovat obrázek. ";
+        let errorMessage = "Nepodařilo se analyzovat obrázek.\n\n";
 
         if (err.message.includes('401')) {
-            errorMessage += "Zkontrolujte váš API klíč.";
+            errorMessage += "❌ Neplatný API klíč.\n\nŘešení:\n• Zkontrolujte, že klíč začíná 'sk-'\n• Vygenerujte nový klíč na platform.openai.com";
         } else if (err.message.includes('429')) {
-            errorMessage += "Překročen limit API požadavků.";
+            errorMessage += "⚠️ PŘEKROČEN LIMIT API!\n\nŘešení:\n1. Počkejte pár minut a zkuste znovu\n2. Zkontrolujte kredity na platform.openai.com/usage\n3. Nastavte billing na platform.openai.com/billing\n4. Nebo použijte DEMO režim (smažte API klíč)";
+        } else if (err.message.includes('402') || err.message.includes('insufficient')) {
+            errorMessage += "💳 NEDOSTATEK KREDITŮ!\n\nŘešení:\n1. Přidejte kredit na platform.openai.com/billing\n2. Zkontrolujte billing settings\n3. Zkuste DEMO režim místo toho";
         } else {
             errorMessage += err.message;
         }
@@ -250,6 +255,53 @@ function displayResult(analysisText) {
     `;
 
     resultDiv.classList.remove('hidden');
+}
+
+// Demo mode - runs without API key
+function runDemoMode() {
+    // Show loading
+    loadingDiv.classList.remove('hidden');
+    resultDiv.classList.add('hidden');
+    analyzeButton.disabled = true;
+
+    // Demo categories with descriptions
+    const demoResults = [
+        {
+            category: "Začátečník večírků",
+            description: "Vypadáš svěže! Ještě máš energii na další kolo. Dej si vodku!"
+        },
+        {
+            category: "Pátek odpoledne",
+            description: "Vidím lehkou únavu v očích. Možná by bylo dobrý jít domů a vyspat se."
+        },
+        {
+            category: "Sobota po tahu",
+            description: "No jo, vidím to na tobě. Kruhy pod očima a trochu bledší. Ale ještě to není katastrofa!"
+        },
+        {
+            category: "Legenda nonstopu",
+            description: "Masivní devastace! Kruhy pod očima jako pandě a bledost. Respekt za výdrž!"
+        },
+        {
+            category: "Zombie z baru",
+            description: "Totální troska! Vypadáš jak zombie. Rudé oči, pomačkaná ksicht. Běž spát, kámo!"
+        },
+        {
+            category: "Chce to detox, kámo",
+            description: "Nekomentovatelný stav. Okamžitě do postele, hodně vody a vitamíny. SOS!"
+        }
+    ];
+
+    // Simulate API delay
+    setTimeout(() => {
+        const randomResult = demoResults[Math.floor(Math.random() * demoResults.length)];
+        const demoText = `${randomResult.category}\n${randomResult.description}\n\n⚠️ DEMO REŽIM - náhodný výsledek`;
+
+        displayResult(demoText);
+
+        loadingDiv.classList.add('hidden');
+        analyzeButton.disabled = false;
+    }, 2000);
 }
 
 // Initialize camera on load
