@@ -35,6 +35,7 @@
                 <div class="input-group">
                     <input type="password" id="apiKey" placeholder="Vložte API klíč...">
                     <button id="toggleApiKey" class="icon-button" title="Zobrazit/skrýt">👁️</button>
+                    <button id="helpButton" class="icon-button help-button" title="Jak získat API klíč?">❓</button>
                 </div>
                 <small class="hint" id="apiHint">Klíč je uložen lokálně v prohlížeči</small>
             </div>
@@ -79,6 +80,15 @@
             <p class="privacy-note">⚠️ Vše probíhá lokálně, fotky nikam neukládáme</p>
         </footer>
     </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="helpContent"></div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
