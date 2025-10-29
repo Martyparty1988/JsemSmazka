@@ -14,6 +14,10 @@ const cameraError = document.getElementById('cameraError');
 const apiKeySection = document.getElementById('apiKeySection');
 const apiHint = document.getElementById('apiHint');
 const apiProviderRadios = document.querySelectorAll('input[name="apiProvider"]');
+const helpButton = document.getElementById('helpButton');
+const helpModal = document.getElementById('helpModal');
+const helpContent = document.getElementById('helpContent');
+const closeModal = document.querySelector('.close-modal');
 
 // State
 let currentImageData = null;
@@ -78,6 +82,144 @@ toggleApiKeyButton.addEventListener('click', () => {
     } else {
         apiKeyInput.type = 'password';
         toggleApiKeyButton.textContent = '👁️';
+    }
+});
+
+// Help modal functions
+function showHelp() {
+    const helpGuides = {
+        gemini: `
+            <h2>🔑 Jak získat Gemini API klíč</h2>
+
+            <div class="step-box">
+                <h3>Krok 1: Otevřete Google AI Studio</h3>
+                <p>Klikněte na tento odkaz (otevře se v novém okně):</p>
+                <p><a href="https://aistudio.google.com/app/apikey" target="_blank">👉 aistudio.google.com/app/apikey</a></p>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 2: Přihlaste se</h3>
+                <p>Přihlaste se svým <strong>Google účtem</strong> (Gmail)</p>
+                <p>Pokud nemáte, vytvořte si zdarma na gmail.com</p>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 3: Vytvořte API klíč</h3>
+                <p><strong>Pokud NEMÁTE Google Cloud projekt:</strong></p>
+                <ol>
+                    <li>Klikněte na tlačítko <strong>"Create API key"</strong></li>
+                    <li>Vyberte <strong>"Create API key in new project"</strong></li>
+                    <li>Počkejte pár sekund ⏳</li>
+                    <li>Hotovo! Klíč se zobrazí ✅</li>
+                </ol>
+                <p><strong>Pokud UŽ MÁTE projekt:</strong></p>
+                <ol>
+                    <li>Klikněte <strong>"Create API key"</strong></li>
+                    <li>Vyberte váš existující projekt</li>
+                    <li>Klíč se vytvoří</li>
+                </ol>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 4: Zkopírujte klíč</h3>
+                <p>Klíč vypadá takto: <code>AIzaSyA...</code> (cca 39 znaků)</p>
+                <p>Klikněte na ikonu <strong>📋 Copy</strong> vedle klíče</p>
+                <div class="warning">
+                    ⚠️ <strong>DŮLEŽITÉ:</strong> Uložte si klíč někam bezpečně! Nikdy ho nesdílejte.
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 5: Použijte v aplikaci</h3>
+                <ol>
+                    <li>Zavřete toto okno (klikněte ×)</li>
+                    <li>Vložte zkopírovaný klíč do pole</li>
+                    <li>Vyfoťte se a klikněte "Analyzovat"</li>
+                    <li>🎉 Hotovo!</li>
+                </ol>
+            </div>
+
+            <h3>❓ Časté problémy</h3>
+            <ul>
+                <li><strong>Nevidím tlačítko "Create API key"</strong> - Zkuste jiný prohlížeč (doporučuji Chrome)</li>
+                <li><strong>Klíč nefunguje</strong> - Zkontrolujte, že začíná <code>AIza</code> a zkopírovali jste celý klíč</li>
+                <li><strong>Chyba při vytváření</strong> - Odhlaste se a znovu přihlaste</li>
+            </ul>
+
+            <p style="margin-top: 20px; text-align: center;">
+                <strong>✨ Gemini je ZDARMA - 1500 analýz denně!</strong>
+            </p>
+        `,
+        openai: `
+            <h2>🔑 Jak získat OpenAI API klíč</h2>
+
+            <div class="warning">
+                ⚠️ <strong>Upozornění:</strong> OpenAI je placené! Doporučujeme použít Google Gemini (ZDARMA).
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 1: Registrace</h3>
+                <p>Otevřete: <a href="https://platform.openai.com/signup" target="_blank">platform.openai.com/signup</a></p>
+                <p>Vytvořte si účet</p>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 2: Nastavte billing</h3>
+                <p>⚠️ <strong>Nutné!</strong> Musíte přidat platební metodu:</p>
+                <p><a href="https://platform.openai.com/billing" target="_blank">👉 platform.openai.com/billing</a></p>
+                <p>Minimální dobitá částka: <strong>$5</strong></p>
+            </div>
+
+            <div class="step-box">
+                <h3>Krok 3: Vytvořte API klíč</h3>
+                <p>Jděte na: <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a></p>
+                <ol>
+                    <li>Klikněte "Create new secret key"</li>
+                    <li>Pojmenujte klíč (např. "JsemSmazka")</li>
+                    <li>Zkopírujte klíč (začíná <code>sk-...</code>)</li>
+                </ol>
+            </div>
+
+            <h3>💰 Náklady</h3>
+            <p>GPT-4o Vision: <strong>~$0.01 za analýzu</strong></p>
+            <p>Nastavte si limity v billing settings!</p>
+
+            <div style="margin-top: 20px; padding: 15px; background: #e8f4fd; border-radius: 8px;">
+                <strong>💡 TIP:</strong> Použijte radši Google Gemini - je ZDARMA a funguje stejně dobře!
+            </div>
+        `
+    };
+
+    if (currentProvider === 'gemini') {
+        helpContent.innerHTML = helpGuides.gemini;
+    } else if (currentProvider === 'openai') {
+        helpContent.innerHTML = helpGuides.openai;
+    }
+
+    helpModal.classList.remove('hidden');
+    helpModal.style.display = 'block';
+}
+
+function closeHelpModal() {
+    helpModal.classList.add('hidden');
+    helpModal.style.display = 'none';
+}
+
+// Help button click
+helpButton.addEventListener('click', showHelp);
+
+// Close modal handlers
+closeModal.addEventListener('click', closeHelpModal);
+helpModal.addEventListener('click', (e) => {
+    if (e.target === helpModal) {
+        closeHelpModal();
+    }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !helpModal.classList.contains('hidden')) {
+        closeHelpModal();
     }
 });
 
